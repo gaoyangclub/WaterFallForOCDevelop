@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageVo:NSObject
-
-@property (nonatomic, assign) NSString* imageUrl;
-@property (nonatomic, assign) NSString* name;
-@property (nonatomic, assign) CGFloat cellHeight;
-
-@end
-
 @interface ViewController : UIViewController
 
 

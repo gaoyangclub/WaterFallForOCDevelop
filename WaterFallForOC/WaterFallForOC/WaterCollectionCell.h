@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ViewController.h"
+#import "CardInfoManager.h"
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
+
+
+@interface GradientNode:ASDisplayNode
+
+@end
 
 @interface WaterCollectionCell : UICollectionViewCell{
 //    BOOL isLoading;
@@ -20,7 +25,9 @@
 @property (nonatomic,retain) NSIndexPath* indexPath;
 
 @property (nonatomic,retain) ASImageNode* imageView;
+@property (nonatomic,retain) ASImageNode* backImageView;
 @property (nonatomic,retain) ASTextNode* titleView;
+@property (nonatomic,retain) ASTextNode* descriptionView;
 @property (nonatomic,retain) ASDisplayNode* titleBack;
 
 @end
