@@ -75,7 +75,7 @@
 -(ASImageNode *)imageView{
     if (!_imageView) {
         _imageView = [[ASImageNode alloc]init];
-        _imageView.layerBacked = true;
+        _imageView.layerBacked = YES;
 //        _imageView.backgroundColor = [UIColor whiteColor];
 //        _imageView.layer.cornerRadius = 30;
 //        _imageView.cornerRadius = 30;
@@ -88,7 +88,7 @@
 -(ASImageNode *)backImageView{
     if (!_backImageView) {
         _backImageView = [[ASImageNode alloc]init];
-        _backImageView.layerBacked = true;
+        _backImageView.layerBacked = YES;
 //        _backImageView.backgroundColor = [UIColor whiteColor];
         [self.contentView.layer addSublayer:_backImageView.layer];
 //        __weak __typeof(self) weakSelf = self;

@@ -18,16 +18,13 @@
 
 @implementation ViewController
 
-UICollectionView* collectionView;
-NSMutableArray* cellInfoArr;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor blackColor];
     
-    cellInfoArr = [CardInfoManager getAllCardInfo];
+    self.cellInfoArr = [CardInfoManager getAllCardInfo];
     
 //    [[NSMutableArray alloc]initWithObjects:
 //                   [[ImageVo alloc]init:@"http://photo.enterdesk.com/2009-3-6/200903052204416294.jpg" andName:@"图片1" andDes:@"藐视啊哈GIA和GIAhi啊哈嘎哈共iahgoiahogha"],
@@ -46,13 +43,13 @@ NSMutableArray* cellInfoArr;
 ////                   @300,@180,@700,@350,@116,@737,@63,@633,@484,
 //                   nil];
     
-    collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[[UICollectionViewLayout alloc]init]];
-    [collectionView registerClass:[WaterCollectionCell class] forCellWithReuseIdentifier:@"cellID"];
-    collectionView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:collectionView];
+    self.collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[[UICollectionViewLayout alloc]init]];
+    [self.collectionView registerClass:[WaterCollectionCell class] forCellWithReuseIdentifier:@"cellID"];
+    self.collectionView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.collectionView];
     
-    collectionView.delegate = self;
-    collectionView.dataSource = self;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     
     [self setWaterFallLayout];
 }
@@ -62,7 +59,7 @@ NSMutableArray* cellInfoArr;
     layout.numberOfColums = 2;
     layout.delegate = self;
     
-    [collectionView setCollectionViewLayout:layout];
+    [self.collectionView setCollectionViewLayout:layout];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,7 +68,7 @@ NSMutableArray* cellInfoArr;
 }
 
 - (CGFloat)heightForItemAtIndexPath:(NSIndexPath *)indexPath{
-    ImageVo* imageVo = cellInfoArr[indexPath.row];
+    ImageVo* imageVo = self.cellInfoArr[indexPath.row];
     return imageVo.cellHeight;
 }
 
@@ -80,12 +77,12 @@ NSMutableArray* cellInfoArr;
 //}
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return cellInfoArr.count;
+    return self.cellInfoArr.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     WaterCollectionCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cellID" forIndexPath: indexPath];
-    ImageVo* imageVo = cellInfoArr[indexPath.row];
+    ImageVo* imageVo = self.cellInfoArr[indexPath.row];
 //    cell.backgroundColor = [UIColor blueColor];
     cell.indexPath = indexPath;
     cell.collectionView = collectionView;
